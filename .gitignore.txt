@@ -1,6 +1,10 @@
 # Dependencies
 node_modules/
 
+# Visual Studio
+.vs/
+
+
 # Build
 dist/
 build/
