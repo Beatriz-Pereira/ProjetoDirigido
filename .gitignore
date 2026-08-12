@@ -4,6 +4,10 @@ node_modules/
 # Visual Studio
 .vs/
 
+node_modules/
+dist/
+.vs/
+
 
 # Build
 dist/

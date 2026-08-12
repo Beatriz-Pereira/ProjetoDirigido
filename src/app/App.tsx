@@ -8,6 +8,20 @@ import {
 
 type Page = "inicio" | "divulgacao" | "oficina" | "sobre";
 
+const bioplasticoAssets = import.meta.glob(
+  "./assets/img/bioplastico/**/*.{png,jpg,jpeg,svg}",
+  { eager: true, as: "url" }
+) as Record<string, string>;
+
+const getBioplasticoImage = (relativePath: string) => {
+  const key = `./assets/img/bioplastico/${relativePath}`;
+  const url = bioplasticoAssets[key];
+  if (!url) {
+    throw new Error(`Imagem bioplástico não encontrada: ${relativePath}`);
+  }
+  return url;
+};
+
 const NAV_ITEMS: { id: Page; label: string }[] = [
   { id: "inicio", label: "Início" },
   { id: "divulgacao", label: "Divulgação" },
@@ -929,16 +943,16 @@ function BeforeAfterSlider({ before, afterImg, beforeAlt, afterAlt }: {
    OFICINA
 ────────────────────────────────────────────── */
 const metodologiaImagens = [
-  "src/app/assets/img/bioplastico/01.jpg",
-  "src/app/assets/img/bioplastico/02.jpg",
-  "src/app/assets/img/bioplastico/03.jpg",
-  "src/app/assets/img/bioplastico/1.jpg",
-  "src/app/assets/img/bioplastico/2.jpg",
-  "src/app/assets/img/bioplastico/3.jpg",
-  "src/app/assets/img/bioplastico/4.jpg",
-  "src/app/assets/img/bioplastico/5.jpg",
-  "src/app/assets/img/bioplastico/6.jpg",
-  "src/app/assets/img/bioplastico/7.jpg",
+  getBioplasticoImage("01.jpg"),
+  getBioplasticoImage("02.jpg"),
+  getBioplasticoImage("03.jpg"),
+  getBioplasticoImage("1.jpg"),
+  getBioplasticoImage("2.jpg"),
+  getBioplasticoImage("3.jpg"),
+  getBioplasticoImage("4.jpg"),
+  getBioplasticoImage("5.jpg"),
+  getBioplasticoImage("6.jpg"),
+  getBioplasticoImage("7.jpg"),
 ];
 const metodologiaImagens2 = [
   "https://images.unsplash.com/photo-1553356084-58ef4a67b2a7?w=400&h=400&fit=crop&auto=format",
@@ -978,11 +992,11 @@ const experimentos = [
       "Resistência à tração moderada; material quebrável sob tensão sem plastificante adicional.",
       "O cenário com 10 mL de glicerina melhorou a flexibilidade do que os testes realizados com 5 mL.",
     ],
-    beforeImg: "src/app/assets/img/bioplastico/resultados/22.jpg",
-    afterImg: "src/app/assets/img/bioplastico/resultados/12.jpg",
-    beforeThumb: "src/app/assets/img/bioplastico/resultados/21.jpg",
-    afterThumb: "src/app/assets/img/bioplastico/resultados/11.jpg",
-    imagem: "src/app/assets/img/bioplastico/milho1.png",
+    beforeImg: getBioplasticoImage("resultados/22.jpg"),
+    afterImg: getBioplasticoImage("resultados/12.jpg"),
+    beforeThumb: getBioplasticoImage("resultados/21.jpg"),
+    afterThumb: getBioplasticoImage("resultados/11.jpg"),
+    imagem: getBioplasticoImage("milho1.png"),
 
   },
   {
