@@ -604,13 +604,13 @@ function PaginaInicio({ setPage }: { setPage: (p: Page) => void }) {
                             Nossa Pesquisa
                         </span>
 
-                        <h3
+                        <h2
                             className="mt-3 max-w-5xl text-4xl md:text-5xl font-bold text-foreground leading-tight"
                             style={{ fontFamily: "'Fraunces', serif" }}
                         >
                             Viabilidade de plásticos biodegradáveis à base de amido como alternativa
                             às embalagens alimentícias de plástico derivado do petróleo.
-                        </h3>
+                        </h2>
                     </div>
 
                     {/* Conteúdo */}
@@ -1451,7 +1451,7 @@ function PaginaSobre() {
                     <div>
                         <div className="flex justify-center align-center overflow-hidden my-8  h-60 ">
                             <img
-                                src="src/app/assets/img/ufabc.png"
+                                src={getBioplasticoImage("ufabc.png")}
                                 alt="Equipe de pesquisa"
                                 className="w-60 h-60 "
                             />
