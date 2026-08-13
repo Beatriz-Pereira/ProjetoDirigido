@@ -601,7 +601,7 @@ function PaginaInicio({ setPage }: { setPage: (p: Page) => void }) {
                             className="text-xs tracking-widest uppercase text-primary font-medium"
                             style={{ fontFamily: "'DM Mono', monospace" }}
                         >
-                            Nossa Pesquisa
+                            Pesquisa
                         </span>
 
                         <h2
@@ -617,52 +617,166 @@ function PaginaInicio({ setPage }: { setPage: (p: Page) => void }) {
                     <div className="grid md:grid-cols-2 gap-16 items-start">
 
                         <div>
+
+                            <h4
+                                style={{ fontFamily: "'Fraunces', serif" }}>Fim dos Microplásticos</h4>
+
+                            <br />
                             <p
                                 className="text-muted-foreground leading-relaxed"
                                 style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300 }}
                             >
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer tincidunt,
-                                sapien vitae facilisis consequat, nunc justo malesuada lectus, vitae
-                                sollicitudin erat neque non libero. Praesent commodo, nisl vel tincidunt
-                                suscipit, augue sapien faucibus erat, eget tincidunt massa lorem vitae nibh.
+                                Os compostos de maior destaque na manufatura de embalagens sustentáveis
+                                incluem o Ácido Polilático (PLA) e os Polihidroxialcanoatos (PHAs).
+                                Diferente de polímeros derivados de combustíveis fósseis, como o PET e o
+                                Polietileno (PE), os quais levam cerca de 400 anos para se fragmentar e
+                                resultam em acúmulo de microplásticos, os bioplásticos modernos oferecem
+                                soluções de degradação otimizada.
                             </p>
 
                             <p
                                 className="mt-4 text-muted-foreground leading-relaxed"
                                 style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300 }}
                             >
-                                Curabitur ullamcorper lacus nec magna consequat, at posuere erat aliquet.
-                                Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere
-                                cubilia curae; Donec interdum, magna quis feugiat volutpat, mauris arcu
-                                malesuada justo, vel consequat neque felis vitae libero.
+                                Pesquisas recentes conduzidas pelo Instituto de Macromoléculas (IMA) da
+                                UFRJ (Tavares et al., 2025) desenvolveram matrizes bioplásticas ativas a
+                                partir de resíduos alimentares que se decompõem em apenas 180 dias. A
+                                pesquisa evidenciou que esses materiais perdem até 90% de sua massa
+                                dentro desse semestre. O diferencial químico reside no fato de que,
+                                mesmo sob condições de descarte inadequadas no solo ou na água, essas
+                                embalagens são consumidas rapidamente por microrganismos, zerando a
+                                persistência de resíduos tóxicos no ambiente.
+                            </p>
+                            <br />
+                            <h4
+                                style={{ fontFamily: "'Fraunces', serif" }}>Avaliação do Ciclo de Vida (LCA)</h4>
+
+
+                            <p
+                                className="mt-4 text-muted-foreground leading-relaxed"
+                                style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300 }}
+                            >
+                                Para garantir que a solução não apenas transfira o impacto ambiental
+                                para outra etapa produtiva, a engenharia utiliza a Avaliação do Ciclo de
+                                Vida (LCA - Life Cycle Assessment), métrica que contabiliza os impactos
+                                da extração da matéria-prima até o fim da vida útil da embalagem.
+                            </p>
+
+                            <p
+                                className="mt-4 text-muted-foreground leading-relaxed"
+                                style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300 }}
+                            >
+                                O estudo recente publicado na revista científica Polymers (Senila et al.,
+                                2024, "Life Cycle Assessment of Bioplastics Production from Lignocellulosic
+                                Waste") consolida a superioridade dos bioplásticos PLA e PHB. A análise
+                                revelou que a síntese industrial de bioplásticos demanda volumes muito
+                                menores de energia de origem fóssil, com potencial de consumir até 65%
+                                menos energia em comparação aos plásticos tradicionais.
+                            </p>
+                            <p
+                                className="text-muted-foreground leading-relaxed"
+                                style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300 }}
+                            >
+                                A emissão de Gases de Efeito Estufa (GEE) também é significativamente
+                                reduzida em comparação aos plásticos convencionais. Dependendo do
+                                polímero e da fonte renovável, como amido de milho, cana-de-açúcar ou
+                                resíduos orgânicos, a transição para os bioplásticos pode baixar as
+                                emissões de gases de efeito estufa entre 50% e 80%.
+                            </p>
+
+                            <p
+                                className="mt-4 text-muted-foreground leading-relaxed"
+                                style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300 }}
+                            >
+                                O PET, muito utilizado na produção de garrafas, emite cerca de 3 kg de
+                                CO₂ por quilo fabricado. O Polietileno (PE), usado em embalagens, emite
+                                de 2 a 2,5 kg de CO₂/kg, enquanto o PVC pode registrar até 3,5 kg de
+                                CO₂/kg devido ao processo baseado em cloro, que demanda altíssima
+                                quantidade de energia. Por outro lado, o PLA (derivado do milho)
+                                apresenta emissões significativamente menores, entre 0,8 e 1,3 kg de
+                                CO₂/kg. Polímeros como o PHA (de base microbiana) podem ir ainda mais
+                                baixo, gerando em torno de 0,6 kg de CO₂/kg, e alternativas à base de
+                                fibras de rápido crescimento, como o cânhamo, apontam emissões entre
+                                0,4 e 0,7 kg de CO₂/kg.
                             </p>
                         </div>
 
                         <div>
+
+
                             <p
-                                className="text-muted-foreground leading-relaxed"
+                                className="mt-4 text-muted-foreground leading-relaxed"
                                 style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300 }}
                             >
-                                Suspendisse potenti. Maecenas interdum turpis sed libero consectetur, eget
-                                vulputate justo elementum. Aenean tristique, purus sed malesuada consequat,
-                                velit augue commodo massa, nec posuere enim ipsum vel nisl. Nam vitae
-                                consequat lectus, at tempor sapien.
+                                A transição para filmes de embalagem de base biológica pode reduzir o
+                                impacto negativo sobre a saúde dos ecossistemas em quase 70%, além de
+                                mitigar o esgotamento de recursos naturais finitos em até 85%, segundo
+                                o estudo.
+                            </p>
+                            <br />
+                            <h4
+                                style={{ fontFamily: "'Fraunces', serif" }}>Viabilidade Comercial e Escalabilidade</h4>
+                            <p
+                                className="mt-4 text-muted-foreground leading-relaxed"
+                                style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300 }}
+                            >
+                                A barreira final para a substituição de uma tecnologia é sua adesão ao
+                                mercado e escalabilidade de produção. A indústria de polímeros de fontes
+                                renováveis já superou gargalos operacionais críticos e hoje atrai
+                                aportes globais massivos. De acordo com o relatório da consultoria
+                                Grand View Research (2024), apenas o mercado europeu de bioplásticos foi
+                                avaliado em US$ 5,82 bilhões no ano de 2023, com uma projeção de
+                                crescimento acelerado (CAGR) de 18,3% ao ano até 2030.
                             </p>
 
                             <p
                                 className="mt-4 text-muted-foreground leading-relaxed"
                                 style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300 }}
                             >
-                                Vivamus euismod, neque id aliquam consectetur, augue lectus tincidunt
-                                mauris, vitae tincidunt libero sapien at justo. Phasellus egestas lacus
-                                quis magna interdum, nec faucibus arcu vestibulum. Morbi volutpat velit
-                                vitae sem efficitur, sed tincidunt neque tincidunt.
+                                O nicho de embalagens alimentícias e farmacêuticas é o principal motor
+                                desse avanço, respondendo por mais de 62% da receita de todo o setor.
+                                Globalmente, a associação European Bioplastics (2024) estima que a
+                                produção total atingiu 2,47 milhões de toneladas métricas em 2024.
+                                Operando atualmente a 60% de sua capacidade máxima, a indústria projeta
+                                um aumento substancial na infraestrutura para entregar mais de 6,3
+                                milhões de toneladas até 2027.
+                            </p>
+
+                            <p
+                                className="mt-4 text-muted-foreground leading-relaxed"
+                                style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300 }}
+                            >
+                                Apesar dos expressivos avanços tecnológicos, é necessário reconhecer que
+                                o maior impasse para a adoção em larga escala dos bioplásticos reside no
+                                domínio estrutural da própria indústria petrolífera. Como os plásticos
+                                convencionais são, em grande parte, subprodutos do refino de combustíveis
+                                fósseis, obtidos a partir do petróleo e do gás natural, o setor
+                                petroquímico mantém um monopólio histórico sobre as cadeias de
+                                suprimentos e as infraestruturas fabris globais.
+                            </p>
+
+                            <p
+                                className="mt-4 text-muted-foreground leading-relaxed"
+                                style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300 }}
+                            >
+                                Pesquisadores como Fredric Bauer e Tobias Dan Nielsen, especialistas em
+                                políticas ambientais e transição industrial da Universidade de Lund,
+                                identificaram e comprovaram esse fenômeno, classificando-o como um severo
+                                "carbon lock-in" (aprisionamento de carbono). Segundo os autores, as
+                                indústrias fósseis utilizam seu domínio econômico e suas gigantescas
+                                instalações já amortizadas para inundar o mercado com matéria-prima
+                                extremamente barata. Consequentemente, essa dependência institucionalizada
+                                cria barreiras comerciais colossais para os bioplásticos, provando que a
+                                transição para embalagens verdadeiramente sustentáveis não é apenas um
+                                desafio da ciência dos materiais, mas uma disputa mercadológica direta
+                                contra um modelo de negócio fóssil que se recusa a ceder espaço.
                             </p>
                         </div>
 
                     </div>
                 </div>
             </section>
+
 
 
             {/* CTA */}
