@@ -69,8 +69,8 @@ function Navbar({ page, setPage }: { page: Page; setPage: (p: Page) => void }) {
                             <button
                                 onClick={() => navigate(item.id)}
                                 className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 ${page === item.id
-                                        ? "bg-primary text-white"
-                                        : "text-foreground hover:bg-secondary hover:text-primary"
+                                    ? "bg-primary text-white"
+                                    : "text-foreground hover:bg-secondary hover:text-primary"
                                     }`}
                                 style={{ fontFamily: "'DM Sans', sans-serif" }}
                             >
@@ -830,8 +830,8 @@ function PaginaDivulgacao() {
                             key={cat}
                             onClick={() => setFiltro(cat)}
                             className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${filtro === cat
-                                    ? "bg-primary text-white"
-                                    : "bg-white text-muted-foreground border border-border hover:border-primary hover:text-primary"
+                                ? "bg-primary text-white"
+                                : "bg-white text-muted-foreground border border-border hover:border-primary hover:text-primary"
                                 }`}
                             style={{ fontFamily: "'DM Sans', sans-serif" }}
                         >
@@ -1206,15 +1206,15 @@ function PaginaOficina() {
                                 key={e.id}
                                 onClick={() => { setExpAberto(e.id); setAba("materiais"); }}
                                 className={`w-full text-left p-5 rounded-xl border transition-all duration-200 ${expAberto === e.id
-                                        ? "bg-primary text-white border-primary shadow-md"
-                                        : "bg-white border-border hover:border-primary/40"
+                                    ? "bg-primary text-white border-primary shadow-md"
+                                    : "bg-white border-border hover:border-primary/40"
                                     }`}
                             >
                                 <div className="flex items-center justify-between mb-2">
                                     <span
                                         className={`text-xs font-medium px-2 py-0.5 rounded-full ${expAberto === e.id
-                                                ? e.status === "Concluído" ? "bg-green-300/30 text-green-100" : "bg-yellow-300/30 text-yellow-100"
-                                                : e.status === "Concluído" ? "bg-green-100 text-green-700" : "bg-amber-100 text-amber-700"
+                                            ? e.status === "Concluído" ? "bg-green-300/30 text-green-100" : "bg-yellow-300/30 text-yellow-100"
+                                            : e.status === "Concluído" ? "bg-green-100 text-green-700" : "bg-amber-100 text-amber-700"
                                             }`}
                                         style={{ fontFamily: "'DM Mono', monospace" }}
                                     >
@@ -1419,15 +1419,52 @@ function PaginaOficina() {
    SOBRE
 ────────────────────────────────────────────── */
 function PaginaSobre() {
-    const [formData, setFormData] = useState({ nome: "", email: "", mensagem: "" });
+    const [formData, setFormData] = useState({ nome: "", email: "", mensagem: "", website: "" });
     const [enviado, setEnviado] = useState(false);
+    const GOOGLE_SCRIPT_URL =
+        "https://script.google.com/macros/s/AKfycbzisMsruvyxCRmW_vY9v9g-wjSQoZdrQG9wxwaLMlp7Ioh74-iFjgqa1kIYzI48VTti/exec";
+    const [enviando, setEnviando] = useState(false);
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        setEnviado(true);
-        setTimeout(() => setEnviado(false), 4000);
-        setFormData({ nome: "", email: "", mensagem: "" });
+
+        setEnviando(true);
+
+        try {
+            const response = await fetch(GOOGLE_SCRIPT_URL, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "text/plain;charset=utf-8",
+                },
+                body: JSON.stringify(formData),
+            });
+
+            const result = await response.json();
+
+            if (!result.success) {
+                throw new Error(result.error || "Erro ao enviar mensagem.");
+            }
+
+            setEnviado(true);
+
+            setFormData({
+                nome: "",
+                email: "",
+                mensagem: "", website: "",
+            });
+
+            setTimeout(() => {
+                setEnviado(false);
+            }, 4000);
+
+        } catch (error) {
+            console.error("Erro ao enviar formulário:", error);
+            alert("Não foi possível enviar sua mensagem. Tente novamente.");
+        } finally {
+            setEnviando(false);
+        }
     };
+
 
     return (
         <main className="pt-24 pb-20 min-h-screen bg-background">
@@ -1530,14 +1567,38 @@ function PaginaSobre() {
                                         style={{ fontFamily: "'DM Sans', sans-serif" }}
                                         placeholder="Sua dúvida, sugestão ou colaboração..."
                                     />
+                                    <input
+                                        type="text"
+                                        name="website"
+                                        value={formData.website}
+                                        onChange={(e) =>
+                                            setFormData({
+                                                ...formData,
+                                                website: e.target.value,
+                                            })
+                                        }
+                                        tabIndex={-1}
+                                        autoComplete="off"
+                                        className="absolute left-[-9999px]"
+                                        aria-hidden="true"
+                                    />
                                 </div>
+
                                 <button
                                     type="submit"
-                                    className="w-full py-3 bg-primary text-white font-medium rounded-lg hover:bg-primary/90 transition-colors flex items-center justify-center gap-2"
+                                    disabled={enviando}
+                                    className="w-full py-3 bg-primary text-white font-medium rounded-lg hover:bg-primary/90 transition-colors flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
                                     style={{ fontFamily: "'DM Sans', sans-serif" }}
                                 >
-                                    Enviar mensagem <ArrowRight className="w-4 h-4" />
+                                    {enviando ? (
+                                        "Enviando..."
+                                    ) : (
+                                        <>
+                                            Enviar mensagem <ArrowRight className="w-4 h-4" />
+                                        </>
+                                    )}
                                 </button>
+
                             </form>
                         )}
                     </div>
