@@ -48,6 +48,10 @@ function Navbar({ page, setPage }: { page: Page; setPage: (p: Page) => void }) {
         window.scrollTo({ top: 0, behavior: "smooth" });
     };
 
+    // Header transparente sobre o banner escuro da home: inverte o texto para branco.
+    // Nas demais páginas o topo é claro (bg-background), então mantém o texto escuro.
+    const sobreBanner = page === "inicio" && !scrolled;
+
     return (
         <header
             className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-white/95 backdrop-blur-md shadow-sm border-b border-border" : "bg-transparent"
@@ -58,8 +62,11 @@ function Navbar({ page, setPage }: { page: Page; setPage: (p: Page) => void }) {
                     <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center">
                         <Leaf className="w-4 h-4 text-white" />
                     </div>
-                    <span className="font-bold text-lg tracking-tight" style={{ fontFamily: "'Fraunces', serif" }}>
-                        BioPlástico<span className="text-primary">BR</span>
+                    <span
+                        className={`font-bold text-lg tracking-tight transition-colors duration-300 ${sobreBanner ? "text-white" : "text-foreground"}`}
+                        style={{ fontFamily: "'Fraunces', serif" }}
+                    >
+                        BioPlástico<span className={sobreBanner ? "text-green-300" : "text-primary"}>BR</span>
                     </span>
                 </button>
 
@@ -69,8 +76,12 @@ function Navbar({ page, setPage }: { page: Page; setPage: (p: Page) => void }) {
                             <button
                                 onClick={() => navigate(item.id)}
                                 className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 ${page === item.id
-                                    ? "bg-primary text-white"
-                                    : "text-foreground hover:bg-secondary hover:text-primary"
+                                    ? sobreBanner
+                                        ? "bg-primary text-white ring-1 ring-white/50"
+                                        : "bg-primary text-white"
+                                    : sobreBanner
+                                        ? "text-white hover:bg-white/15"
+                                        : "text-foreground hover:bg-secondary hover:text-primary"
                                     }`}
                                 style={{ fontFamily: "'DM Sans', sans-serif" }}
                             >
@@ -81,7 +92,7 @@ function Navbar({ page, setPage }: { page: Page; setPage: (p: Page) => void }) {
                 </ul>
 
                 <button
-                    className="md:hidden p-2 rounded-md hover:bg-secondary transition-colors"
+                    className={`md:hidden p-2 rounded-md transition-colors ${sobreBanner ? "text-white hover:bg-white/15" : "text-foreground hover:bg-secondary"}`}
                     onClick={() => setOpen(!open)}
                     aria-label="Menu"
                 >
@@ -1138,12 +1149,7 @@ const metodologiaImagens = [
     getBioplasticoImage("6.jpg"),
     getBioplasticoImage("7.jpg"),
 ];
-const metodologiaImagens2 = [
-    "https://images.unsplash.com/photo-1553356084-58ef4a67b2a7?w=400&h=400&fit=crop&auto=format",
-    "https://images.unsplash.com/photo-1603126857599-f6e157fa2fe6?w=400&h=400&fit=crop&auto=format",
-    "https://images.unsplash.com/photo-1581093196867-ca9c4e3e3593?w=400&h=400&fit=crop&auto=format",
-    "https://images.unsplash.com/photo-1614935151651-0bea6508db6b?w=400&h=400&fit=crop&auto=format",
-];
+const imgResultado = (nome: string) => getBioplasticoImage(`resultados/${nome}`);
 
 const experimentos = [
     {
@@ -1176,108 +1182,162 @@ const experimentos = [
             "Resistência à tração moderada; material quebrável sob tensão sem plastificante adicional.",
             "O cenário com 10 mL de glicerina melhorou a flexibilidade do que os testes realizados com 5 mL.",
         ],
-        beforeImg: getBioplasticoImage("resultados/22.jpg"),
-        afterImg: getBioplasticoImage("resultados/12.jpg"),
-        beforeThumb: getBioplasticoImage("resultados/21.jpg"),
-        afterThumb: getBioplasticoImage("resultados/11.jpg"),
+        comparacoes: [
+            {
+                titulo: "Grupo de controle × resultado final",
+                antes: imgResultado("22.jpg"),
+                depois: imgResultado("12.jpg"),
+                antesThumb: imgResultado("21.jpg"),
+                depoisThumb: imgResultado("11.jpg"),
+            },
+        ],
         imagem: getBioplasticoImage("milho1.png"),
-
     },
     {
         id: "exp02",
         titulo: "Teste de Força do Bioplástico de Amido",
-        status: "Em andamento",
+        status: "Concluído",
         objetivo:
-            "Investigar o reforço mecânico de filmes de bioplástico de amido com adição de fibras curtas de bambu processadas.",
+            "Avaliar a resistência mecânica do bioplástico e compará-la à de plásticos convencionais por meio de um ensaio de tração simplificado, adaptado do método quase-estático descrito por Cossolino e Pereira (2010).",
         materiais: [
-            "30 g de amido de mandioca",
-            "5 g de fibra de bambu (moída e peneirada, 0,5 mm)",
-            "250 mL de água destilada",
-            "20 mL de glicerina vegetal",
-            "5 mL de vinagre branco",
+            "Tira padronizada de bioplástico (2,8 cm × 1,2 cm × 0,1 cm)",
+            "Barra horizontal para fixação da extremidade superior",
+            "Fio de nylon",
+            "Cesta pequena para aplicação de cargas",
+            "Pesos conhecidos para incremento gradual da carga",
+            "Régua e caneta para marcação do comprimento de referência",
         ],
         metodologia: [
-            { texto: "Processar fibra de bambu seca em liquidificador por 3 minutos; peneirar a 0,5 mm.", img: metodologiaImagens2[0] },
-            { texto: "Preparar solução de amido conforme Experimento 01 até gelificação inicial.", img: metodologiaImagens2[1] },
-            { texto: "Incorporar fibra à mistura aquecida antes da gelificação completa, mexendo vigorosamente.", img: metodologiaImagens2[2] },
-            { texto: "Vazar em molde e secar em estufa a 40°C por 12 horas até peso constante.", img: metodologiaImagens2[3] },
+            { texto: "Confeccionar uma tira padronizada a partir da amostra de bioplástico separada para o experimento.", img: "" },
+            { texto: "Fixar a extremidade superior da tira a uma barra horizontal e conectar a extremidade inferior, por meio de um fio de nylon, a uma pequena cesta destinada à aplicação de cargas.", img: imgResultado("esquema-de-ensaio.jpg") },
+            { texto: "Antes de iniciar o ensaio, fazer duas marcações sobre o corpo de prova, delimitando um comprimento inicial de referência.", img: "" },
+            { texto: "Adicionar gradualmente pesos conhecidos à cesta e, a cada novo incremento de carga, medir novamente o comprimento entre as marcações para acompanhar a deformação.", img: "" },
+            { texto: "Conduzir o procedimento até o material apresentar deformação permanente ou rompimento, observando o empescoçamento — redução localizada da largura que indica a proximidade da ruptura.", img: imgResultado("amostra-final-tracao.jpg") },
         ],
         resultados: [
-            "Aumento estimado de 25–35% na resistência à tração (resultados preliminares).",
-            "Distribuição heterogênea de fibras observada em amostras iniciais.",
-            "Opacidade do filme aumentou com adição de fibra.",
+            "A amostra de 2,8 cm × 1,2 cm × 0,1 cm suportou carga máxima de 350 g antes de romper — aproximadamente 3,43 N, o que equivale a uma pressão de cerca de 286 kPa sobre o material.",
+            "Esse valor é comparável ao de um PVC flexível (plastificado), cuja carga máxima de suporte gira em torno de 0,1 MPa segundo a ADMET Testing Systems (2012): mesmo sendo biodegradável, o bioplástico tem resistência próxima à de plásticos convencionais mais maleáveis.",
+            "O comprimento passou de 2,8 cm para 3,1 cm no momento da ruptura — deformação de aproximadamente 9,6%, indicando um material pouco elástico, que rompe relativamente cedo quando esticado.",
+            "O baixo alongamento é coerente com a literatura: filmes à base de amido tendem a se alongar menos que filmes com plastificantes na composição (Mali, Grossmann e Yamashita, 2010).",
+            "O bioplástico suporta cargas relevantes antes de romper, o que reforça seu potencial para aplicações que não exijam alta elasticidade, como embalagens rígidas ou de curta duração.",
         ],
-        beforeImg: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&h=500&fit=crop&auto=format",
-        afterImg: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=900&h=500&fit=crop&auto=format",
-        beforeThumb: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=260&fit=crop&auto=format",
-        afterThumb: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=260&fit=crop&auto=format",
+        comparacoes: [
+            {
+                titulo: "Montagem do ensaio × amostra rompida",
+                antes: imgResultado("amostra-inicial-tracao.jpg"),
+                depois: imgResultado("amostra-final-tracao.jpg"),
+                antesThumb: imgResultado("amostra-inicial-tracao.jpg"),
+                depoisThumb: imgResultado("amostra-final-tracao.jpg"),
+            },
+        ],
         observacoes:
-            "Experimento em fase de repetição para validação estatística. Homogeneização mecânica da fibra está sendo ajustada.",
-        imagem: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=450&fit=crop&auto=format",
+            "Referências para valores nominais de resistência do plástico PVC: ADMET Testing Systems. (2012). Micro Tensile Strength Test of Plastic per ASTM D638. YouTube. https://www.youtube.com/watch?v=58hw2QxxDro.",
+        imagem: imgResultado("experimento-02.jpg"),
     },
     {
         id: "exp03",
         titulo: "Teste de Degradação do Bioplástico de Amido Soterrado",
-        status: "Em andamento",
+        status: "Concluído",
         objetivo:
-            "Investigar o reforço mecânico de filmes de bioplástico de amido com adição de fibras curtas de bambu processadas.",
+            "Avaliar a velocidade de biodegradação do bioplástico em diferentes tipos de solo, simulando condições ambientais representativas de locais onde ocorre o descarte inadequado de resíduos plásticos.",
         materiais: [
-            "30 g de amido de mandioca",
-            "5 g de fibra de bambu (moída e peneirada, 0,5 mm)",
-            "250 mL de água destilada",
-            "20 mL de glicerina vegetal",
-            "5 mL de vinagre branco",
+            "3 amostras idênticas de bioplástico de amido",
+            "1 amostra de plástico convencional, para comparação",
+            "Solo argiloso, rico em argila e com elevada retenção de água (simula margens de rios e lagos)",
+            "Solo comum de jardim, quintal ou terreno urbano (simula descarte irregular em áreas residenciais)",
+            "Solo arenoso levemente umedecido com água salgada (simula praias e regiões costeiras)",
+            "Balança para registro da massa das amostras",
+            "Câmera para registro fotográfico padronizado",
         ],
         metodologia: [
-            { texto: "Processar fibra de bambu seca em liquidificador por 3 minutos; peneirar a 0,5 mm.", img: metodologiaImagens2[0] },
-            { texto: "Preparar solução de amido conforme Experimento 01 até gelificação inicial.", img: metodologiaImagens2[1] },
-            { texto: "Incorporar fibra à mistura aquecida antes da gelificação completa, mexendo vigorosamente.", img: metodologiaImagens2[2] },
-            { texto: "Vazar em molde e secar em estufa a 40°C por 12 horas até peso constante.", img: metodologiaImagens2[3] },
+            { texto: "Antes da inserção no solo, registrar a massa inicial de todas as amostras e fotografá-las para documentar o estado original.", img: imgResultado("amostras-iniciais-terra.jpg") },
+            { texto: "Ambiente 1 — enterrar uma amostra em solo argiloso, com elevada retenção de água, simulando margens de rios e lagos, locais frequentemente afetados por resíduos transportados pelas correntezas.", img: imgResultado("amostra-barroso.jpg") },
+            { texto: "Ambiente 2 — enterrar uma amostra em solo comum, constituído por terra de jardins, quintais ou terrenos urbanos, o ambiente terrestre mais comum para o descarte irregular de plásticos.", img: imgResultado("amostra-quintal.jpg") },
+            { texto: "Ambiente 3 — enterrar uma amostra em solo arenoso levemente umedecido com água salgada, simulando praias e regiões costeiras.", img: imgResultado("amostra-arenoso.jpg") },
+            { texto: "Enterrar também uma amostra de plástico convencional em solo comum, como referência comparativa.", img: imgResultado("amostra-inicial-normal-terra.jpg") },
+            { texto: "Retirar as amostras em intervalos regulares e registrar massa, aspecto visual, alteração de coloração, rachaduras ou fragmentação e o surgimento de fungos ou outros organismos visíveis. Após cada análise, devolver a amostra ao respectivo ambiente.", img: "" },
+            { texto: "Ao término do experimento, calcular a perda percentual de massa de cada amostra para comparar quantitativamente a velocidade de biodegradação em cada ambiente.", img: "" },
         ],
         resultados: [
-            "Aumento estimado de 25–35% na resistência à tração (resultados preliminares).",
-            "Distribuição heterogênea de fibras observada em amostras iniciais.",
-            "Opacidade do filme aumentou com adição de fibra.",
+            "As amostras enterradas em solo argiloso e em solo comum apresentaram maior potencial biodegradativo, evidenciado pela redução de volume e pela presença de agentes decompositores como fungos e bactérias.",
+            "A amostra em solo argiloso apresentou o maior grau de degradação entre as três, com estrutura fragilizada e aspecto gelatinoso.",
+            "A amostra em solo comum demonstrou sinais de decomposição biológica, mas manteve-se seca e rígida, com aspecto próximo ao do estado inicial.",
+            "A amostra em ambiente arenoso ficou gelatinosa e completamente fragmentada em pedaços menores, sem agentes decompositores visíveis — o que sugere degradação predominantemente físico-química (umidade e salinidade), e não biológica.",
+            "A amostra de plástico convencional manteve-se intacta em todos os ambientes, sem alterações significativas de massa, cor ou estrutura, confirmando sua baixa degradabilidade no solo.",
         ],
-        beforeImg: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&h=500&fit=crop&auto=format",
-        afterImg: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=900&h=500&fit=crop&auto=format",
-        beforeThumb: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=260&fit=crop&auto=format",
-        afterThumb: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=260&fit=crop&auto=format",
-        observacoes:
-            "Experimento em fase de repetição para validação estatística. Homogeneização mecânica da fibra está sendo ajustada.",
-        imagem: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=450&fit=crop&auto=format",
+        comparacoes: [
+            {
+                titulo: "Bioplástico em solo argiloso",
+                antes: imgResultado("amostra-barroso.jpg"),
+                depois: imgResultado("amostra-final-barroso.jpg"),
+                antesThumb: imgResultado("amostra-barroso.jpg"),
+                depoisThumb: imgResultado("amostra-final-barroso.jpg"),
+            },
+            {
+                titulo: "Bioplástico em solo comum",
+                antes: imgResultado("amostra-quintal.jpg"),
+                depois: imgResultado("amostra-final-quintal.jpg"),
+                antesThumb: imgResultado("amostra-quintal.jpg"),
+                depoisThumb: imgResultado("amostra-final-quintal.jpg"),
+            },
+            {
+                titulo: "Bioplástico em solo arenoso",
+                antes: imgResultado("amostra-arenoso.jpg"),
+                depois: imgResultado("amostra-final-arenoso.jpg"),
+                antesThumb: imgResultado("amostra-arenoso.jpg"),
+                depoisThumb: imgResultado("amostra-final-arenoso.jpg"),
+            },
+            {
+                titulo: "Plástico convencional em solo comum",
+                antes: imgResultado("amostra-inicial-normal-terra.jpg"),
+                depois: imgResultado("amostra-final-normal-terra.jpg"),
+                antesThumb: imgResultado("amostra-inicial-normal-terra.jpg"),
+                depoisThumb: imgResultado("amostra-final-normal-terra.jpg"),
+            },
+        ],
+        imagem: imgResultado("amostras-iniciais-terra.jpg"),
     },
     {
         id: "exp04",
         titulo: "Teste de Degradação do Bioplástico de Amido Imerso em Água",
-        status: "Em andamento",
+        status: "Concluído",
         objetivo:
-            "Investigar o reforço mecânico de filmes de bioplástico de amido com adição de fibras curtas de bambu processadas.",
+            "Avaliar qualitativamente a biodegradação do bioplástico em contato com a água, ambiente diretamente afetado pelo descarte de plásticos, comparando-o a um plástico convencional.",
         materiais: [
-            "30 g de amido de mandioca",
-            "5 g de fibra de bambu (moída e peneirada, 0,5 mm)",
-            "250 mL de água destilada",
-            "20 mL de glicerina vegetal",
-            "5 mL de vinagre branco",
+            "2 amostras de bioplástico de amido (uma imersa e uma de controle)",
+            "2 amostras de plástico convencional de embalagens (uma imersa e uma de controle)",
+            "Recipientes com água",
+            "Câmera para registro fotográfico das avaliações",
         ],
         metodologia: [
-            { texto: "Processar fibra de bambu seca em liquidificador por 3 minutos; peneirar a 0,5 mm.", img: metodologiaImagens2[0] },
-            { texto: "Preparar solução de amido conforme Experimento 01 até gelificação inicial.", img: metodologiaImagens2[1] },
-            { texto: "Incorporar fibra à mistura aquecida antes da gelificação completa, mexendo vigorosamente.", img: metodologiaImagens2[2] },
-            { texto: "Vazar em molde e secar em estufa a 40°C por 12 horas até peso constante.", img: metodologiaImagens2[3] },
+            { texto: "Separar quatro amostras — duas de bioplástico de amido e duas de plástico convencional de embalagens — e registrar o estado inicial de cada uma.", img: imgResultado("amostra-inicial-agua-amido.jpg") },
+            { texto: "Reservar uma amostra de cada tipo como grupo de controle, mantida em local protegido da água, da umidade, da luz solar e de demais fatores que possam comprometer sua integridade.", img: imgResultado("amostra-inicial-agua-normal.jpg") },
+            { texto: "Submergir as demais amostras em recipientes com água.", img: imgResultado("amostra-amido--agua.jpg") },
+            { texto: "Avaliar as amostras em intervalos de uma hora, um dia, uma semana e duas semanas, registrando fotos e descrições do aspecto e observando sinais de degradação, como fragmentação.", img: imgResultado("amostra-normal-agua.jpg") },
+            { texto: "Ao final do período, comparar o estado de cada amostra imersa com o do respectivo grupo de controle.", img: "" },
         ],
         resultados: [
-            "Aumento estimado de 25–35% na resistência à tração (resultados preliminares).",
-            "Distribuição heterogênea de fibras observada em amostras iniciais.",
-            "Opacidade do filme aumentou com adição de fibra.",
+            "Observou-se degradação visível do bioplástico: ao final do período experimental, o material apresentava aspecto frágil e gelatinoso, com perda perceptível de volume e consistência.",
+            "Ao se aplicar um ponto de pressão localizado, a amostra se desfez facilmente em fragmentos, confirmando a fragilidade estrutural resultante do processo de degradação.",
+            "O plástico convencional (à base de petróleo) manteve sua consistência original durante todo o período analisado, sem sinais visíveis de alteração estrutural, o que confirma sua baixa degradabilidade em meio aquoso.",
         ],
-        beforeImg: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&h=500&fit=crop&auto=format",
-        afterImg: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=900&h=500&fit=crop&auto=format",
-        beforeThumb: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=260&fit=crop&auto=format",
-        afterThumb: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=260&fit=crop&auto=format",
-        observacoes:
-            "Experimento em fase de repetição para validação estatística. Homogeneização mecânica da fibra está sendo ajustada.",
-        imagem: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=450&fit=crop&auto=format",
+        comparacoes: [
+            {
+                titulo: "Bioplástico de amido imerso em água",
+                antes: imgResultado("amostra-inicial-agua-amido.jpg"),
+                depois: imgResultado("amostra-final-agua-amido.jpg"),
+                antesThumb: imgResultado("amostra-inicial-agua-amido.jpg"),
+                depoisThumb: imgResultado("amostra-final-agua-amido.jpg"),
+            },
+            {
+                titulo: "Plástico convencional imerso em água",
+                antes: imgResultado("amostra-inicial-agua-normal.jpg"),
+                depois: imgResultado("amostra-final-agua-normal.jpg"),
+                antesThumb: imgResultado("amostra-inicial-agua-normal.jpg"),
+                depoisThumb: imgResultado("amostra-final-agua-normal.jpg"),
+            },
+        ],
+        imagem: imgResultado("amostra-final-agua-amido.jpg"),
     },
 ];
 
@@ -1412,27 +1472,36 @@ function PaginaOficina() {
                                         {exp.metodologia.map((passo, i) => (
                                             <li key={i} className="flex items-center gap-5">
                                                 {/* Imagem orgânica */}
-                                                <div className="flex-shrink-0 relative">
-                                                    <div
-                                                        className="w-32 h-32 sm:w-40 sm:h-40 md:w-56 md:h-56 lg:w-72 lg:h-72 xl:w-80 xl:h-80 overflow-hidden" style={{
-                                                            borderRadius: "62% 38% 46% 54% / 60% 44% 56% 40%",
-                                                            boxShadow: "0 0 0 4px rgba(74,155,111,0.18), 0 0 16px 6px rgba(26,107,69,0.15)",
-                                                        }}
-                                                    >
-                                                        <img
-                                                            src={passo.img}
-                                                            alt={`Passo ${i + 1}`}
-                                                            className="w-full h-full object-cover"
-                                                        />
+                                                {passo.img ? (
+                                                    <div className="flex-shrink-0 relative">
+                                                        <div
+                                                            className="w-32 h-32 sm:w-40 sm:h-40 md:w-56 md:h-56 lg:w-72 lg:h-72 xl:w-80 xl:h-80 overflow-hidden" style={{
+                                                                borderRadius: "62% 38% 46% 54% / 60% 44% 56% 40%",
+                                                                boxShadow: "0 0 0 4px rgba(74,155,111,0.18), 0 0 16px 6px rgba(26,107,69,0.15)",
+                                                            }}
+                                                        >
+                                                            <img
+                                                                src={passo.img}
+                                                                alt={`Passo ${i + 1}`}
+                                                                className="w-full h-full object-cover"
+                                                            />
+                                                        </div>
+                                                        {/* Número sobreposto */}
+                                                        <div
+                                                            className="absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-primary text-white flex items-center justify-center text-xs font-bold shadow"
+                                                            style={{ fontFamily: "'DM Mono', monospace" }}
+                                                        >
+                                                            {i + 1}
+                                                        </div>
                                                     </div>
-                                                    {/* Número sobreposto */}
+                                                ) : (
                                                     <div
-                                                        className="absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-primary text-white flex items-center justify-center text-xs font-bold shadow"
+                                                        className="flex-shrink-0 w-8 h-8 rounded-full bg-secondary text-primary flex items-center justify-center text-xs font-bold"
                                                         style={{ fontFamily: "'DM Mono', monospace" }}
                                                     >
                                                         {i + 1}
                                                     </div>
-                                                </div>
+                                                )}
                                                 {/* Texto */}
                                                 <p
                                                     className="text-sm text-muted-foreground leading-relaxed flex-1"
@@ -1471,34 +1540,38 @@ function PaginaOficina() {
                                             >
                                                 Comparação visual
                                             </p>
-                                            <div className="grid grid-cols-2 gap-3 mb-5">
-                                                <div className="rounded-xl overflow-hidden border border-border">
-                                                    <div className="relative">
-                                                        <img src={exp.beforeThumb} alt="Antes" className="w-full object-cover" style={{ height: 140 }} />
-
+                                            {exp.comparacoes.map((c) => (
+                                                <div key={c.titulo} className="mb-10 last:mb-0">
+                                                    <p
+                                                        className="text-sm font-medium text-foreground mb-3"
+                                                        style={{ fontFamily: "'DM Sans', sans-serif" }}
+                                                    >
+                                                        {c.titulo}
+                                                    </p>
+                                                    <div className="grid grid-cols-2 gap-3 mb-5">
+                                                        <div className="rounded-xl overflow-hidden border border-border">
+                                                            <img src={c.antesThumb} alt={`${c.titulo} — antes`} className="w-full object-cover" style={{ height: 140 }} />
+                                                        </div>
+                                                        <div className="rounded-xl overflow-hidden border border-border">
+                                                            <img src={c.depoisThumb} alt={`${c.titulo} — depois`} className="w-full object-cover" style={{ height: 140 }} />
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div className="rounded-xl overflow-hidden border border-border">
-                                                    <div className="relative">
-                                                        <img src={exp.afterThumb} alt="Depois" className="w-full object-cover" style={{ height: 140 }} />
 
-                                                    </div>
+                                                    {/* Slider sobreposição */}
+                                                    <p
+                                                        className="text-xs uppercase tracking-widest text-muted-foreground mb-3"
+                                                        style={{ fontFamily: "'DM Mono', monospace" }}
+                                                    >
+                                                        Deslize para comparar
+                                                    </p>
+                                                    <BeforeAfterSlider
+                                                        before={c.antes}
+                                                        afterImg={c.depois}
+                                                        beforeAlt={`${c.titulo} — antes`}
+                                                        afterAlt={`${c.titulo} — depois`}
+                                                    />
                                                 </div>
-                                            </div>
-
-                                            {/* Slider sobreposição */}
-                                            <p
-                                                className="text-xs uppercase tracking-widest text-muted-foreground mb-3"
-                                                style={{ fontFamily: "'DM Mono', monospace" }}
-                                            >
-                                                Deslize para comparar
-                                            </p>
-                                            <BeforeAfterSlider
-                                                before={exp.beforeImg}
-                                                afterImg={exp.afterImg}
-                                                beforeAlt="Grupo de controle"
-                                                afterAlt="Resultado final"
-                                            />
+                                            ))}
                                         </div>
 
                                         {/* Observações */}
