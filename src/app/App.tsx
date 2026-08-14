@@ -603,9 +603,8 @@ function PaginaInicio({ setPage }: { setPage: (p: Page) => void }) {
             <Graficos />
 
             {/* Tese */}
-            <section className="py-24 bg-background">
+           <section className="py-24 bg-background">
                 <div className="max-w-6xl mx-auto px-5">
-
                     {/* Título */}
                     <div className="mb-12">
                         <span
@@ -614,7 +613,6 @@ function PaginaInicio({ setPage }: { setPage: (p: Page) => void }) {
                         >
                             Pesquisa
                         </span>
-
                         <h2
                             className="mt-3 max-w-5xl text-4xl md:text-5xl font-bold text-foreground leading-tight"
                             style={{ fontFamily: "'Fraunces', serif" }}
@@ -623,10 +621,8 @@ function PaginaInicio({ setPage }: { setPage: (p: Page) => void }) {
                             às embalagens alimentícias de plástico derivado do petróleo.
                         </h2>
                     </div>
-
                     {/* Conteúdo */}
                     <div className="grid md:grid-cols-2 gap-16 items-start">
-
                         <div>
                             <h4
                                 className="text-lg font-semibold text-foreground"
@@ -638,15 +634,14 @@ function PaginaInicio({ setPage }: { setPage: (p: Page) => void }) {
                                 className="mt-4 text-muted-foreground leading-relaxed text-justify"
                                 style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300 }}
                             >
-                                Um dos principais problemas ao se utilizar o plástico à base de petróleo é o seu destino final no meio ambiente. O mundo produz cerca de 430 milhões de toneladas de plástico por ano (PNUMA) e o Brasil gera 4,82 milhões de toneladas de resíduos plásticos no mesmo período (ABIPLAST). O gráfico de destinação mostra onde isso termina: cerca de 81% do total global e 79% do brasileiro seguem para aterros, lixões ou descarte inadequado.
+                                O principal problema do plástico à base de petróleo não está apenas em sua produção, mas em seu destino final. O mundo gera cerca de 430 milhões de toneladas de plástico por ano (PNUMA), das quais o Brasil é responsável por 4,82 milhões de toneladas (ABIPLAST). Desse total, aproximadamente 81% do volume global e 79% do volume brasileiro seguem para aterros, lixões ou descarte inadequado, sem qualquer forma de reaproveitamento.
                             </p>
                             <p
                                 className="mt-4 text-muted-foreground leading-relaxed text-justify"
                                 style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300 }}
                             >
-                                Somado ao tempo de permanência desses materiais no ambiente (450 anos para o PET, 400 para o nylon e 200 para as sacolas de polietileno), o problema deixa de ser apenas o volume produzido: quase tudo o que é descartado permanece. É esse acúmulo, e não a produção em si, que a substituição por materiais degradáveis sem impactos negativos ao ambiente se destaca.
+                                Esse cenário se agrava quando se considera o tempo de permanência desses materiais no ambiente: 450 anos para o PET, 400 para o nylon e 200 para as sacolas de polietileno. Assim, o problema deixa de ser apenas o volume produzido e passa a ser o acúmulo constante, já que quase tudo o que é descartado permanece no meio ambiente por séculos. É justamente esse acúmulo, mais do que a produção em si, que justifica a busca por materiais capazes de se degradar sem gerar impactos negativos ao ambiente.
                             </p>
-
                             <h4
                                 className="mt-10 text-lg font-semibold text-foreground"
                                 style={{ fontFamily: "'Fraunces', serif" }}
@@ -657,17 +652,15 @@ function PaginaInicio({ setPage }: { setPage: (p: Page) => void }) {
                                 className="mt-4 text-muted-foreground leading-relaxed text-justify"
                                 style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300 }}
                             >
-                                Em comparação direta entre os dois tipos de plásticos analisados, o bioplástico apresenta um desempenho superior em degradação no meio ambiente, evidenciado pelos ensaios de biodegradação conduzidos com as amostras produzidas na oficina e com o plástico convencional, submetendo-os aos mesmos ambientes. Em água, o bioplástico chegou ao fim do período com aspecto frágil e gelatinoso, com perda perceptível de volume, desfazendo-se em fragmentos sob leve pressão. O plástico de embalagem manteve a consistência original, sem sinal visível de alteração estrutural.
+                                Foi justamente nesse ponto que o bioplástico se destacou nos ensaios conduzidos. Ao submeter as amostras produzidas na oficina e o plástico convencional aos mesmos ambientes, observou-se um desempenho de degradação claramente superior do bioplástico. Em água, por exemplo, o material chegou ao fim do período com aspecto frágil e gelatinoso, apresentando perda perceptível de volume e se desfazendo em fragmentos sob leve pressão. O plástico de embalagem, por sua vez, manteve a consistência original, sem qualquer sinal visível de alteração estrutural.
                             </p>
                             <p
                                 className="mt-4 text-muted-foreground leading-relaxed text-justify"
                                 style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300 }}
                             >
-                                No solo, o resultado se repetiu de forma semelhante, com algumas diferenças dos bioplásticos entre si. A amostra em solo argiloso apresentou o maior grau de degradação, com estrutura fragilizada e presença de fungos e bactérias; em solo arenoso, ficou completamente fragmentada, porém sem decompositores visíveis, o que indica degradação físico-química por umidade e salinidade, e não biológica. Ainda assim, em todos os ambientes testados o plástico convencional permaneceu intacto, sem alteração significativa de massa, cor ou estrutura.
-
+                                No solo, o padrão se repetiu, embora com diferenças relevantes entre os próprios ambientes testados. A amostra em solo argiloso apresentou o maior grau de degradação, com estrutura fragilizada e presença visível de fungos e bactérias, enquanto a amostra em solo arenoso, apesar de completamente fragmentada, não apresentou decompositores visíveis — um indício de que, nesse caso, a degradação decorreu principalmente de fatores físico-químicos, como umidade e salinidade, e não de atividade biológica. Ainda assim, em todos os ambientes testados o plástico convencional permaneceu intacto, sem alteração significativa de massa, cor ou estrutura, reforçando o contraste entre os dois materiais.
                             </p>
                         </div>
-
                         <div>
                             <h4
                                 className="text-lg font-semibold text-foreground"
@@ -679,21 +672,20 @@ function PaginaInicio({ setPage }: { setPage: (p: Page) => void }) {
                                 className="mt-4 text-muted-foreground leading-relaxed text-justify"
                                 style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300 }}
                             >
-                                Entretanto, degradar rápido só se torna interessante quando o material cumpre sua finalidade até o momento de seu descarte. Ao analisarmos os resultados do ensaio de tração adaptado do método de Cossolino e Pereira (2010), uma tira de 2,8 × 1,2 × 0,1 cm suportou carga máxima de 350 g antes de romper (cerca de 3,43 N, ou aproximadamente 286 kPa sobre o material). O que é um valor bem baixo se comparado aos demais valores obtidos com os plásticos à base de petróleo, como apresentado na tabela de propriedades mecânicas de diversos plásticos disponível no site <a href="https://www.ensingerplastics.com/pt-br/selecao-de-material-plastico/propriedades-mecanicas" target="_blank" rel="noopener noreferrer">Ensiner (clique aqui para visualizar)</a>.
+                                Ainda assim, degradar rapidamente só é vantajoso quando o material consegue cumprir sua função até o momento do descarte. É nesse ponto que o ensaio de tração, adaptado do método de Cossolino e Pereira (2010), revela uma limitação importante: uma tira de 2,8 × 1,2 × 0,1 cm suportou carga máxima de apenas 350 g antes de romper, o equivalente a cerca de 3,43 N, ou aproximadamente 286 kPa sobre o material. Trata-se de um valor bastante baixo quando comparado aos plásticos à base de petróleo, conforme a tabela de propriedades mecânicas disponível no site <a href="https://www.ensingerplastics.com/pt-br/selecao-de-material-plastico/propriedades-mecanicas" target="_blank" rel="noopener noreferrer">Ensiner (clique aqui para visualizar)</a>.
                             </p>
                             <p
                                 className="mt-4 text-muted-foreground leading-relaxed text-justify"
                                 style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300 }}
                             >
-                                O limite é ainda mais evidente no alongamento: a amostra passou de 2,8 cm para 3,1 cm até a ruptura, uma deformação de apenas 9,6%. É um material que resiste à carga, mas estica pouco antes de romper — comportamento coerente com o que Mali, Grossmann e Yamashita (2010) descrevem para filmes à base de amido. Ou seja, o plástico analisado se qualifica principalmente para embalagens rígidas ou de vida curta, em que se exige suportar carga sem necessidade de esticar.
+                                Essa limitação fica ainda mais evidente ao observar o alongamento do material: a amostra passou de 2,8 cm para 3,1 cm até o momento da ruptura, o que representa uma deformação de apenas 9,6%. Ou seja, trata-se de um material que resiste razoavelmente à carga, mas se estica pouco antes de romper — comportamento coerente com o que Mali, Grossmann e Yamashita (2010) descrevem para filmes à base de amido. Na prática, isso significa que o bioplástico analisado se qualifica principalmente para embalagens rígidas ou de vida curta, em que se exige suportar carga sem a necessidade de grande flexibilidade.
                             </p>
                             <p
                                 className="mt-4 text-muted-foreground leading-relaxed text-justify"
                                 style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300 }}
                             >
-                                Outra limitação enconra-se em aplicações que dependam de contato prolongado com líquidos, uma vez que a mesma sensibilidade à água que garante a degradação em duas semanas inviabiliza o uso com produto úmido.
+                                Além disso, há uma segunda limitação relevante: aplicações que exigem contato prolongado com líquidos tendem a ser inviáveis, já que a mesma sensibilidade à água responsável pela degradação em apenas duas semanas compromete a integridade do material quando em contato com produtos úmidos.
                             </p>
-
                             <h4
                                 className="mt-10 text-lg font-semibold text-foreground"
                                 style={{ fontFamily: "'Fraunces', serif" }}
@@ -701,19 +693,17 @@ function PaginaInicio({ setPage }: { setPage: (p: Page) => void }) {
                                 Por que ainda não é o padrão
                             </h4>
                             <p
-                                className="mt-4 text-muted-foreground leading-relaxed"
+                                className="mt-4 text-muted-foreground leading-relaxed text-justify"
                                 style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300 }}
                             >
-                                A barreira restante é econômica antes de ser técnica. Como os plásticos
-                                convencionais são, em grande parte, subprodutos do refino de combustíveis
+                                Diante de resultados tão favoráveis à degradação, cabe perguntar por que esse tipo de material ainda não substituiu o plástico convencional em larga escala. A resposta está menos na tecnologia e mais na economia. Como os plásticos convencionais são, em grande parte, subprodutos do refino de combustíveis
                                 fósseis, o setor petroquímico opera com instalações já amortizadas e
                                 matéria-prima muito barata — fenômeno que Bauer e Nielsen, da Universidade
                                 de Lund, classificam como <span className="italic">carbon lock-in</span>.
-                                Enquanto o custo relativo não mudar, materiais que se degradam em semanas
+                                Enquanto essa diferença de custo relativo não mudar, materiais que se degradam em semanas
                                 seguirão competindo em desvantagem com materiais que duram séculos.
                             </p>
                         </div>
-
                     </div>
                 </div>
             </section>
