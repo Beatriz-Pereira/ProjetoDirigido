@@ -628,159 +628,89 @@ function PaginaInicio({ setPage }: { setPage: (p: Page) => void }) {
                     <div className="grid md:grid-cols-2 gap-16 items-start">
 
                         <div>
+                            <h4
+                                className="text-lg font-semibold text-foreground"
+                                style={{ fontFamily: "'Fraunces', serif" }}
+                            >
+                                A necessidade do descarte sustentável de plásticos
+                            </h4>
+                            <p
+                                className="mt-4 text-muted-foreground leading-relaxed text-justify"
+                                style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300 }}
+                            >
+                                Um dos principais problemas ao se utilizar o plástico à base de petróleo é o seu destino final no meio ambiente. O mundo produz cerca de 430 milhões de toneladas de plástico por ano (PNUMA) e o Brasil gera 4,82 milhões de toneladas de resíduos plásticos no mesmo período (ABIPLAST). O gráfico de destinação mostra onde isso termina: cerca de 81% do total global e 79% do brasileiro seguem para aterros, lixões ou descarte inadequado.
+                            </p>
+                            <p
+                                className="mt-4 text-muted-foreground leading-relaxed text-justify"
+                                style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300 }}
+                            >
+                                Somado ao tempo de permanência desses materiais no ambiente (450 anos para o PET, 400 para o nylon e 200 para as sacolas de polietileno), o problema deixa de ser apenas o volume produzido: quase tudo o que é descartado permanece. É esse acúmulo, e não a produção em si, que a substituição por materiais degradáveis sem impactos negativos ao ambiente se destaca.
+                            </p>
 
                             <h4
-                                style={{ fontFamily: "'Fraunces', serif" }}>Fim dos Microplásticos</h4>
-
-                            <br />
+                                className="mt-10 text-lg font-semibold text-foreground"
+                                style={{ fontFamily: "'Fraunces', serif" }}
+                            >
+                                Degradação visível e impactante de bioplásticos
+                            </h4>
                             <p
-                                className="text-muted-foreground leading-relaxed"
+                                className="mt-4 text-muted-foreground leading-relaxed text-justify"
                                 style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300 }}
                             >
-                                Os compostos de maior destaque na manufatura de embalagens sustentáveis
-                                incluem o Ácido Polilático (PLA) e os Polihidroxialcanoatos (PHAs).
-                                Diferente de polímeros derivados de combustíveis fósseis, como o PET e o
-                                Polietileno (PE), os quais levam cerca de 400 anos para se fragmentar e
-                                resultam em acúmulo de microplásticos, os bioplásticos modernos oferecem
-                                soluções de degradação otimizada.
-                            </p>
-
-                            <p
-                                className="mt-4 text-muted-foreground leading-relaxed"
-                                style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300 }}
-                            >
-                                Pesquisas recentes conduzidas pelo Instituto de Macromoléculas (IMA) da
-                                UFRJ (Tavares et al., 2025) desenvolveram matrizes bioplásticas ativas a
-                                partir de resíduos alimentares que se decompõem em apenas 180 dias. A
-                                pesquisa evidenciou que esses materiais perdem até 90% de sua massa
-                                dentro desse semestre. O diferencial químico reside no fato de que,
-                                mesmo sob condições de descarte inadequadas no solo ou na água, essas
-                                embalagens são consumidas rapidamente por microrganismos, zerando a
-                                persistência de resíduos tóxicos no ambiente.
-                            </p>
-                            <br />
-                            <h4
-                                style={{ fontFamily: "'Fraunces', serif" }}>Avaliação do Ciclo de Vida (LCA)</h4>
-
-
-                            <p
-                                className="mt-4 text-muted-foreground leading-relaxed"
-                                style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300 }}
-                            >
-                                Para garantir que a solução não apenas transfira o impacto ambiental
-                                para outra etapa produtiva, a engenharia utiliza a Avaliação do Ciclo de
-                                Vida (LCA - Life Cycle Assessment), métrica que contabiliza os impactos
-                                da extração da matéria-prima até o fim da vida útil da embalagem.
-                            </p>
-
-                            <p
-                                className="mt-4 text-muted-foreground leading-relaxed"
-                                style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300 }}
-                            >
-                                O estudo recente publicado na revista científica Polymers (Senila et al.,
-                                2024, "Life Cycle Assessment of Bioplastics Production from Lignocellulosic
-                                Waste") consolida a superioridade dos bioplásticos PLA e PHB. A análise
-                                revelou que a síntese industrial de bioplásticos demanda volumes muito
-                                menores de energia de origem fóssil, com potencial de consumir até 65%
-                                menos energia em comparação aos plásticos tradicionais.
+                                Em comparação direta entre os dois tipos de plásticos analisados, o bioplástico apresenta um desempenho superior em degradação no meio ambiente, evidenciado pelos ensaios de biodegradação conduzidos com as amostras produzidas na oficina e com o plástico convencional, submetendo-os aos mesmos ambientes. Em água, o bioplástico chegou ao fim do período com aspecto frágil e gelatinoso, com perda perceptível de volume, desfazendo-se em fragmentos sob leve pressão. O plástico de embalagem manteve a consistência original, sem sinal visível de alteração estrutural.
                             </p>
                             <p
-                                className="text-muted-foreground leading-relaxed"
+                                className="mt-4 text-muted-foreground leading-relaxed text-justify"
                                 style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300 }}
                             >
-                                A emissão de Gases de Efeito Estufa (GEE) também é significativamente
-                                reduzida em comparação aos plásticos convencionais. Dependendo do
-                                polímero e da fonte renovável, como amido de milho, cana-de-açúcar ou
-                                resíduos orgânicos, a transição para os bioplásticos pode baixar as
-                                emissões de gases de efeito estufa entre 50% e 80%.
-                            </p>
+                                No solo, o resultado se repetiu de forma semelhante, com algumas diferenças dos bioplásticos entre si. A amostra em solo argiloso apresentou o maior grau de degradação, com estrutura fragilizada e presença de fungos e bactérias; em solo arenoso, ficou completamente fragmentada, porém sem decompositores visíveis, o que indica degradação físico-química por umidade e salinidade, e não biológica. Ainda assim, em todos os ambientes testados o plástico convencional permaneceu intacto, sem alteração significativa de massa, cor ou estrutura.
 
-                            <p
-                                className="mt-4 text-muted-foreground leading-relaxed"
-                                style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300 }}
-                            >
-                                O PET, muito utilizado na produção de garrafas, emite cerca de 3 kg de
-                                CO₂ por quilo fabricado. O Polietileno (PE), usado em embalagens, emite
-                                de 2 a 2,5 kg de CO₂/kg, enquanto o PVC pode registrar até 3,5 kg de
-                                CO₂/kg devido ao processo baseado em cloro, que demanda altíssima
-                                quantidade de energia. Por outro lado, o PLA (derivado do milho)
-                                apresenta emissões significativamente menores, entre 0,8 e 1,3 kg de
-                                CO₂/kg. Polímeros como o PHA (de base microbiana) podem ir ainda mais
-                                baixo, gerando em torno de 0,6 kg de CO₂/kg, e alternativas à base de
-                                fibras de rápido crescimento, como o cânhamo, apontam emissões entre
-                                0,4 e 0,7 kg de CO₂/kg.
                             </p>
                         </div>
 
                         <div>
-
-
-                            <p
-                                className="mt-4 text-muted-foreground leading-relaxed"
-                                style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300 }}
-                            >
-                                A transição para filmes de embalagem de base biológica pode reduzir o
-                                impacto negativo sobre a saúde dos ecossistemas em quase 70%, além de
-                                mitigar o esgotamento de recursos naturais finitos em até 85%, segundo
-                                o estudo.
-                            </p>
-                            <br />
                             <h4
-                                style={{ fontFamily: "'Fraunces', serif" }}>Viabilidade Comercial e Escalabilidade</h4>
+                                className="text-lg font-semibold text-foreground"
+                                style={{ fontFamily: "'Fraunces', serif" }}
+                            >
+                                Limitações encontradas na adoção do novo modelo de plástico
+                            </h4>
                             <p
-                                className="mt-4 text-muted-foreground leading-relaxed"
+                                className="mt-4 text-muted-foreground leading-relaxed text-justify"
                                 style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300 }}
                             >
-                                A barreira final para a substituição de uma tecnologia é sua adesão ao
-                                mercado e escalabilidade de produção. A indústria de polímeros de fontes
-                                renováveis já superou gargalos operacionais críticos e hoje atrai
-                                aportes globais massivos. De acordo com o relatório da consultoria
-                                Grand View Research (2024), apenas o mercado europeu de bioplásticos foi
-                                avaliado em US$ 5,82 bilhões no ano de 2023, com uma projeção de
-                                crescimento acelerado (CAGR) de 18,3% ao ano até 2030.
+                                Entretanto, degradar rápido só se torna interessante quando o material cumpre sua finalidade até o momento de seu descarte. Ao analisarmos os resultados do ensaio de tração adaptado do método de Cossolino e Pereira (2010), uma tira de 2,8 × 1,2 × 0,1 cm suportou carga máxima de 350 g antes de romper (cerca de 3,43 N, ou aproximadamente 286 kPa sobre o material). O que é um valor bem baixo se comparado aos demais valores obtidos com os plásticos à base de petróleo, como apresentado na tabela de propriedades mecânicas de diversos plásticos disponível no site <a href="https://www.ensingerplastics.com/pt-br/selecao-de-material-plastico/propriedades-mecanicas" target="_blank" rel="noopener noreferrer">Ensiner (clique aqui para visualizar)</a>.
+                            </p>
+                            <p
+                                className="mt-4 text-muted-foreground leading-relaxed text-justify"
+                                style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300 }}
+                            >
+                                O limite é ainda mais evidente no alongamento: a amostra passou de 2,8 cm para 3,1 cm até a ruptura, uma deformação de apenas 9,6%. É um material que resiste à carga, mas estica pouco antes de romper — comportamento coerente com o que Mali, Grossmann e Yamashita (2010) descrevem para filmes à base de amido. Ou seja, o plástico analisado se qualifica principalmente para embalagens rígidas ou de vida curta, em que se exige suportar carga sem necessidade de esticar.
+                            </p>
+                            <p
+                                className="mt-4 text-muted-foreground leading-relaxed text-justify"
+                                style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300 }}
+                            >
+                                Outra limitação enconra-se em aplicações que dependam de contato prolongado com líquidos, uma vez que a mesma sensibilidade à água que garante a degradação em duas semanas inviabiliza o uso com produto úmido.
                             </p>
 
+                            <h4
+                                className="mt-10 text-lg font-semibold text-foreground"
+                                style={{ fontFamily: "'Fraunces', serif" }}
+                            >
+                                Por que ainda não é o padrão
+                            </h4>
                             <p
                                 className="mt-4 text-muted-foreground leading-relaxed"
                                 style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300 }}
                             >
-                                O nicho de embalagens alimentícias e farmacêuticas é o principal motor
-                                desse avanço, respondendo por mais de 62% da receita de todo o setor.
-                                Globalmente, a associação European Bioplastics (2024) estima que a
-                                produção total atingiu 2,47 milhões de toneladas métricas em 2024.
-                                Operando atualmente a 60% de sua capacidade máxima, a indústria projeta
-                                um aumento substancial na infraestrutura para entregar mais de 6,3
-                                milhões de toneladas até 2027.
-                            </p>
-
-                            <p
-                                className="mt-4 text-muted-foreground leading-relaxed"
-                                style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300 }}
-                            >
-                                Apesar dos expressivos avanços tecnológicos, é necessário reconhecer que
-                                o maior impasse para a adoção em larga escala dos bioplásticos reside no
-                                domínio estrutural da própria indústria petrolífera. Como os plásticos
+                                A barreira restante é econômica antes de ser técnica. Como os plásticos
                                 convencionais são, em grande parte, subprodutos do refino de combustíveis
-                                fósseis, obtidos a partir do petróleo e do gás natural, o setor
-                                petroquímico mantém um monopólio histórico sobre as cadeias de
-                                suprimentos e as infraestruturas fabris globais.
-                            </p>
-
-                            <p
-                                className="mt-4 text-muted-foreground leading-relaxed"
-                                style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 300 }}
-                            >
-                                Pesquisadores como Fredric Bauer e Tobias Dan Nielsen, especialistas em
-                                políticas ambientais e transição industrial da Universidade de Lund,
-                                identificaram e comprovaram esse fenômeno, classificando-o como um severo
-                                "carbon lock-in" (aprisionamento de carbono). Segundo os autores, as
-                                indústrias fósseis utilizam seu domínio econômico e suas gigantescas
-                                instalações já amortizadas para inundar o mercado com matéria-prima
-                                extremamente barata. Consequentemente, essa dependência institucionalizada
-                                cria barreiras comerciais colossais para os bioplásticos, provando que a
-                                transição para embalagens verdadeiramente sustentáveis não é apenas um
-                                desafio da ciência dos materiais, mas uma disputa mercadológica direta
-                                contra um modelo de negócio fóssil que se recusa a ceder espaço.
+                                fósseis, o setor petroquímico opera com instalações já amortizadas e
+                                matéria-prima muito barata — fenômeno que Bauer e Nielsen, da Universidade
+                                de Lund, classificam como <span className="italic">carbon lock-in</span>.
+                                Enquanto o custo relativo não mudar, materiais que se degradam em semanas
+                                seguirão competindo em desvantagem com materiais que duram séculos.
                             </p>
                         </div>
 
@@ -1216,7 +1146,7 @@ const experimentos = [
         ],
         resultados: [
             "A amostra de 2,8 cm × 1,2 cm × 0,1 cm suportou carga máxima de 350 g antes de romper — aproximadamente 3,43 N, o que equivale a uma pressão de cerca de 286 kPa sobre o material.",
-            "Esse valor é comparável ao de um PVC flexível (plastificado), cuja carga máxima de suporte gira em torno de 0,1 MPa segundo a ADMET Testing Systems (2012): mesmo sendo biodegradável, o bioplástico tem resistência próxima à de plásticos convencionais mais maleáveis.",
+            "Esse valor é comparável ao de um PVC flexível (plastificado), cujo módulo de elasticidade gira em torno de 0,1 MPa segundo a ADMET Testing Systems (2012): mesmo sendo biodegradável, o bioplástico tem resistência próxima à de plásticos convencionais mais maleáveis.",
             "O comprimento passou de 2,8 cm para 3,1 cm no momento da ruptura — deformação de aproximadamente 9,6%, indicando um material pouco elástico, que rompe relativamente cedo quando esticado.",
             "O baixo alongamento é coerente com a literatura: filmes à base de amido tendem a se alongar menos que filmes com plastificantes na composição (Mali, Grossmann e Yamashita, 2010).",
             "O bioplástico suporta cargas relevantes antes de romper, o que reforça seu potencial para aplicações que não exijam alta elasticidade, como embalagens rígidas ou de curta duração.",
