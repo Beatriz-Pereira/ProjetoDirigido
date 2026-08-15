@@ -1100,7 +1100,7 @@ const experimentos = [
         resultados: [
             "Filme translúcido obtido após secagem.",
             "Resistência à tração moderada; material quebrável sob tensão sem plastificante adicional.",
-            "O cenário com 10 mL de glicerina melhorou a flexibilidade do que os testes realizados com 5 mL.",
+            "O cenário com 5 mL de glicerina melhorou a flexibilidade do que os testes realizados com 2,5 mL.",
         ],
         comparacoes: [
             {
